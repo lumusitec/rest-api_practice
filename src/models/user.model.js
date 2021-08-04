@@ -1,4 +1,4 @@
-const monggose = require('mongoose')
+const mongoose = require('mongoose')
 const { Schema, model } = mongoose
 const { compareSync, hashSync, genSaltSync } = require('bcryptjs')
 
@@ -18,7 +18,7 @@ userSchema.methods.comparePasswords = function (password) {
     return compareSync(password, this.password)
 }
 
-mongoose.pre('save', async function (next) {
+userSchema.pre('save', async function (next) {
     const user = this
     if (!user.isModified('password')) next()
 
