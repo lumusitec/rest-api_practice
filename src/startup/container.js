@@ -9,8 +9,9 @@ const { HomeService } = require('../services')
 const { UserService } = require('../services')
 const { IdeaService } = require('../services')
 const { CommentService } = require('../services')
+
 // Controllers
-const { HomeController } = require('../controllers')
+const { HomeController, UserController, IdeaController, CommentController } = require('../controllers')
 
 // Routes
 const { HomeRoutes } = require('../routes/index.routes')
@@ -22,6 +23,7 @@ const { User, Idea, Comment } = require('../models')
 // Repositories
 const { UserRepository, IdeaRepository, CommentRepository } = require('../repositories')
 
+// Container
 const container = createContainer()
 
 container
@@ -34,9 +36,12 @@ container
         HomeService: asClass(HomeService).singleton(),
         UserService: asClass(UserService).singleton(),
         IdeaService: asClass(IdeaService).singleton(),
-        CommentService: asClass(CommentService).singleton(),
+        CommentService: asClass(CommentService).singleton()
     }).register({
-        HomeController: asClass(HomeController.bind(HomeController)).singleton()
+        HomeController: asClass(HomeController.bind(HomeController)).singleton(),
+        UserController: asClass(UserController.bind(UserController)).singleton(),
+        IdeaController: asClass(IdeaController.bind(IdeaController)).singleton(),
+        CommentController: asClass(CommentController.bind(CommentController)).singleton()
 
     }).register({
         HomeRoutes: asFunction(HomeRoutes).singleton()

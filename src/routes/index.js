@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const helmet = require('helmet')
 const compression = require('compression')
+const morgan = require('morgan')
 require('express-async-errors')
 const { NotFoundMiddleware, ErrorMiddleWare } = require('../middlewares')
 
@@ -14,6 +15,7 @@ module.exports = function ({ HomeRoutes }) {
         .use(cors())
         .use(helmet())
         .use(compression())
+        .use(morgan('dev'))
 
     apiRoutes.use('/home', HomeRoutes)
 

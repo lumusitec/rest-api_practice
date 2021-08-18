@@ -39,7 +39,7 @@ class BaseService {
             throw error
         }
 
-        return this.repository.update(id, entity, { new: true })
+        return await this.repository.update(id, entity, { new: true })
     }
 
     async delete(id) {
