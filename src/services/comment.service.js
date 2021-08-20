@@ -48,7 +48,7 @@ class CommentService extends BaseService {
             throw error
         }
 
-        const createdComment = _commentRepository.createComment(comment)
+        const createdComment = await _commentRepository.createComment(comment)
         idea.comments.push(createdComment)
 
         return await _ideaRepository.update(ideaId, { comments: idea.comments })
