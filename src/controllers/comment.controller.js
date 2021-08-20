@@ -1,4 +1,4 @@
-let _commentService = require('../services')
+let _commentService = null
 
 class CommentController {
     constructor({ CommentService }) {
@@ -33,7 +33,7 @@ class CommentController {
     async createComment(req, res) {
         const { body } = req
         const { ideaId } = req.params
-        const createdComment = _ideaService.createComment(body, ideaId)
+        const createdComment = _commentService.createComment(body, ideaId)
         return res.status(201).send(createdComment)
     }
 }

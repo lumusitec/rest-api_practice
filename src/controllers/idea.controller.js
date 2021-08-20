@@ -1,4 +1,4 @@
-let _ideaService = require('../services')
+let _ideaService = null
 
 class IdeaController {
     constructor({ IdeaService }) {

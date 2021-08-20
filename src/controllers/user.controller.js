@@ -1,4 +1,4 @@
-let _userService = require('../services')
+let _userService = null
 
 class UserController {
     constructor({ UserService }) {
